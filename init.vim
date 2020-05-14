@@ -1,3 +1,4 @@
+let mapleader = "\<Space>"
 let g:plugged_home = '~/.vim/plugged'
 
 " Plugins List
@@ -109,5 +110,18 @@ let g:airline_section_z = '%3l/%L:%3v'
 let g:airline#extensions#ale#enabled = 1
 let airline#extensions#ale#error_symbol = 'E:'
 let airline#extensions#ale#warning_symbol = 'W:'
+
+" Hotkeys
+map <C-p> :Files<CR>
+nmap <leader>; :Buffers<CR>
 " NerdTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Neat X clipboard integration
+" ,p will paste clipboard into buffer
+" ,c will copy entire buffer into clipboard
+noremap <leader>p :read !xsel --clipboard --output<cr>
+noremap <leader>c :w !xsel -ib<cr><cr>
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>

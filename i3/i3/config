@@ -224,8 +224,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym --release Print exec gnome-screenshot -i
 
 exec --no-startup-id feh --bg-scale ~/Pictures/1024077.jpg
-exec --no-startup-id "setxkbmap -layout us,ru"
-exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+exec "setxkbmap -layout us,ru"
+exec "setxkbmap -option 'grp:alt_shift_toggle'"
 exec --no-startup-id nm-applet
 
 # assign [class="Google-chrome"] $workspace1
