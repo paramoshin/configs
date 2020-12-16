@@ -11,14 +11,6 @@ call plug#begin(g:plugged_home)
   Plug 'Yggdroot/indentLine'
   " syntax check
   Plug 'w0rp/ale'
-  " Autocomplete
-  Plug 'ncm2/ncm2'
-  Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/ncm2-bufword'
-  Plug 'ncm2/ncm2-path'
-  Plug 'ncm2/ncm2-jedi'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
   " Formater
   Plug 'Chiel92/vim-autoformat'
   " Comment
@@ -44,9 +36,9 @@ syntax enable
 " colorscheme
 let base16colorspace=256
 " colorscheme base16-google-dark
-" colorscheme base16-gruvbox-dark-hard
+colorscheme base16-gruvbox-dark-hard
 " colorscheme base16-solarized-dark
-colorscheme base16-atelier-dune
+" colorscheme base16-atelier-dune
 set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
@@ -75,27 +67,6 @@ set tabstop=4
 set shiftwidth=4
 " vim-autoformat
 noremap <F3> :Autoformat<CR>
-" NCM2
-augroup NCM2
-  autocmd!
-  " enable ncm2 for all buffers
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-  " :help Ncm2PopupOpen for more information
-  set completeopt=noinsert,menuone,noselect
-  " When the <Enter> key is pressed while the popup menu is visible, it only
-  " hides the menu. Use this mapping to close the menu and also start a new line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-  " uncomment this block if you use vimtex for LaTex
-  " autocmd Filetype tex call ncm2#register_source({
-  "           \ 'name': 'vimtex',
-  "           \ 'priority': 8,
-  "           \ 'scope': ['tex'],
-  "           \ 'mark': 'tex',
-  "           \ 'word_pattern': '\w+',
-  "           \ 'complete_pattern': g:vimtex#re#ncm2,
-  "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-  "           \ })
-augroup END
 " Ale
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'

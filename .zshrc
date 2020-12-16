@@ -72,7 +72,7 @@ ZSH_THEME="alanpeabody"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux sudo docker docker-compose zsh-syntax-highlighting)
+plugins=(git tmux sudo docker docker-compose dotenv fzf zsh-syntax-highlighting poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,17 +101,31 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vi="nvim"
 alias vim="nvim"
-alias mlenv="source ~/.mlenv/bin/activate"
-alias cvenv="python3 -m venv venv"
-alias avenv="source venv/bin/activate"
+alias mlenv="source ~/mlenv/bin/activate"
+alias cvenv="python3 -m venv .venv"
+alias avenv=". .venv/bin/activate"
 alias pcat='pygmentize -f terminal256 -O style=vim -g'
+alias notes="cd ~/Dropbox/notes && vim ."
+alias q="exit"
+
+# exa
+alias ls="exa"
+alias ll="exa --long"
+alias la="exa --long --all"
+alias lt="exa -T -L 2"
+
+# pyenv
+export PATH="/home/anton/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# golang
-export PATH=$PATH:/usr/local/go/bin
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+export PATH="$HOME/.poetry/bin:$PATH"
